@@ -1,11 +1,11 @@
 #include "src/lista.h"
 #include <stdio.h>
 
-bool mostrar_elemento(void* _elemento, void* extra)
+bool mostrar_elemento(void *_elemento, void *extra)
 {
-    int* elemento = _elemento;
-    printf("Elemento: %i\n", *elemento);
-    return true;
+	int *elemento = _elemento;
+	printf("Elemento: %i\n", *elemento);
+	return true;
 }
 
 int main(int argc, char *argv[])
@@ -24,18 +24,15 @@ int main(int argc, char *argv[])
 		printf("Elemento: %i\n", *elemento);
 	}
 
-    printf("\nMuestro la lista por pantalla O(n)\n");
-    lista_con_cada_elemento(lista, mostrar_elemento, NULL);
+	printf("\nMuestro la lista por pantalla O(n)\n");
+	lista_con_cada_elemento(lista, mostrar_elemento, NULL);
 
 	printf("Muestro la lista por pantalla O(n)\n");
-	for (lista_iterador_t* i = lista_iterador_crear(lista);
-         lista_iterador_hay_mas_elementos(i);
-         lista_iterador_siguiente(i)) {
+	for (lista_iterador_t *i = lista_iterador_crear(lista);
+	     lista_iterador_hay_mas_elementos(i); lista_iterador_siguiente(i)) {
 		int *elemento = lista_iterador_obtener_actual(i);
 		printf("Elemento: %i\n", *elemento);
 	}
 
-
 	return 0;
 }
-

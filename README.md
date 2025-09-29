@@ -10,7 +10,6 @@
 
 ```bash
 make main_compilar
-
 ```
 
 - Para ejecutar:
@@ -21,7 +20,8 @@ make main_compilar
 
 - Para ejecutar con valgrind:
 ```bash
-
+make valgrind_main
+make valgrind_pruebas
 ```
 ---
 ##  Funcionamiento
@@ -29,17 +29,17 @@ Basicamente, para lista, se creo una estructura adicional nodo (nodo_t) donde se
 
 ## Diagrama de memoria de lista clasica
 <div align="center">
-<img src="img/lista\ tplista.jpeg">
+<img src="img/lista_tplista.jpeg">
 </div>
 
 ## Diagrama de memoria de cola
 <div align="center">
-<img src="img/cola\ tplista.jpeg">
+<img src="img/cola_tplista.jpeg">
 </div>
 
 ## Diagrama de memoria de pila
 <div align="center">
-<img src="img/pila\ tplista.jpeg">
+<img src="img/pila_tplista.jpeg">
 </div>
 
 ##

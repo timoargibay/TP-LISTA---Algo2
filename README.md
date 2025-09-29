@@ -27,9 +27,21 @@ make main_compilar
 ##  Funcionamiento
 Basicamente, para lista, se creo una estructura adicional nodo (nodo_t) donde se guardan dos punteros, uno al siguiente elemento y otro hacia la informacion correspondiente, la estructura lista posee un puntero al primer nodo, al ultimo y un size_t con la cantidad total de nodos, cada funcion hace lo pedido, en el main al abrir el programa se lee el archivo pasado por linea de comandos y luego se lo copia completamente a la lista (es decir, son elementos nuevos y los punteros de lista no apuntan a los datos de el struct tp1_t, esto fue adrede con la intencion de que no haya problemas de liberacion de memoria y para demostrar que el funcionamiento es genuinamente de la lista y no de el struct tp1
 
-<div>
-<img src="">
+## Diagrama de memoria de lista clasica
+<div align="center">
+<img src="img/lista\ tplista.jpeg">
 </div>
+
+## Diagrama de memoria de cola
+<div align="center">
+<img src="img/cola\ tplista.jpeg">
+</div>
+
+## Diagrama de memoria de pila
+<div align="center">
+<img src="img/pila\ tplista.jpeg">
+</div>
+
 ##
 Explicación de cómo funcionan las estructuras desarrolladas en el TP y el funcionamiento general del mismo.
 

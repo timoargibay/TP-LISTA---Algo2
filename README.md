@@ -23,11 +23,12 @@ make main_compilar
 ```bash
 
 ```
-
-##  Recomendacion del escritor: Usar los comandos de makefile
 ---
 ##  Funcionamiento
 
+
+
+##
 Explicación de cómo funcionan las estructuras desarrolladas en el TP y el funcionamiento general del mismo.
 
 Aclarar en esta parte todas las decisiones que se tomaron al realizar el TP, cosas que no se aclaren en el enunciado, fragmentos de código que necesiten explicación extra, etc.

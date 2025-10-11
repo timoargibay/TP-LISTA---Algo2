@@ -5,7 +5,7 @@ valgrind_condiciones = --leak-check=full --track-origins=yes --show-reachable=ye
 pruebas_compilar: pruebas_alumno.c src_compilar tp1_compilar
 	gcc $(gcc_condiciones) pruebas_alumno.c archivos_objeto/lista.o archivos_objeto/pila.o archivos_objeto/cola.o -o pruebas_alumno
 
-src_compilar: src/lista.c
+src_compilar: src/lista.c src/pila.c src/cola.c
 	gcc $(gcc_condiciones) -c src/lista.c -o archivos_objeto/lista.o
 	gcc $(gcc_condiciones) -c src/cola.c -o archivos_objeto/cola.o
 	gcc $(gcc_condiciones) -c src/pila.c -o archivos_objeto/pila.o

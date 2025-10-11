@@ -1,93 +1,76 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "pila.h"
-
-struct nodo {
-	void *dato;
-	struct nodo *siguiente;
-};
-
-typedef struct nodo nodo_t;
+#include "lista.h"
 
 struct pila {
-	nodo_t *primero;
-	size_t cantidad;
+	lista_t *lista;
 };
 
 pila_t *pila_crear()
 {
-	pila_t *nueva_lista = malloc(sizeof(pila_t));
+	pila_t *pila = malloc(sizeof(pila_t));
 
-	if (nueva_lista == NULL)
+	if (pila == NULL)
 		return NULL;
 
-	nueva_lista->cantidad = 0;
-	nueva_lista->primero = NULL;
+	pila->lista = lista_crear();
 
-	return nueva_lista;
+	if (pila->lista == NULL) {
+		free(pila);
+		return NULL;
+	}
+
+	return pila;
 }
 
 bool pila_apilar(pila_t *pila, void *elemento)
 {
-	if (pila == NULL)
+	if (pila == NULL || pila->lista == NULL)
 		return false;
 
-	nodo_t *nodo_nuevo = malloc(sizeof(nodo_t));
+	//Manejo caso especial porque
+	//lista insertar no admite insertar en lista vacia
 
-	if (nodo_nuevo == NULL)
-		return false;
+	if (lista_cantidad(pila->lista) == 0)
+		return lista_agregar(pila->lista, elemento);
 
-	nodo_nuevo->dato = elemento;
-	nodo_nuevo->siguiente = NULL;
-
-	if (pila->primero != NULL)
-		nodo_nuevo->siguiente = pila->primero;
-
-	pila->primero = nodo_nuevo;
-	pila->cantidad++;
-
-	return true;
+	return lista_insertar(pila->lista, elemento, 0);
 }
 
 void *pila_desapilar(pila_t *pila)
 {
-	if (pila == NULL || pila->primero == NULL)
-		return NULL;
+	if (pila == NULL || pila->lista == NULL)
+		return false;
 
-	nodo_t *actual = pila->primero;
-	void *dato = NULL;
-
-	dato = actual->dato;
-	pila->primero = actual->siguiente;
-	free(actual);
-	pila->cantidad--;
-	return dato;
+	return lista_eliminar_elemento(pila->lista, 0);
 }
 
 void *pila_ver_primero(pila_t *pila)
 {
-	if (pila == NULL || pila->primero == NULL)
+	if (pila == NULL || pila->lista == NULL)
 		return NULL;
 
-	return pila->primero->dato;
+	return lista_buscar_elemento(pila->lista, 0);
 }
 
 size_t pila_cantidad(pila_t *pila)
 {
-	if (pila == NULL)
+	if (pila == NULL || pila->lista == NULL)
 		return 0;
 
-	return pila->cantidad;
+	return lista_cantidad(pila->lista);
 }
 
 void pila_destruir(pila_t *pila)
 {
-	if (pila == NULL)
+	if (pila == NULL || pila->lista == NULL)
 		return;
 
-	while (pila->cantidad != 0 && pila->primero != NULL) {
+	while (lista_cantidad(pila->lista) != 0) {
 		pila_desapilar(pila);
 	}
 
+	lista_destruir(pila->lista);
 	free(pila);
 }
